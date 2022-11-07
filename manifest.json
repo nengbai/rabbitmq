@@ -1,8 +1,8 @@
 {
-    "workshoptitle": "Oracle Container Engine for Kubernetes",
+    "workshoptitle": "OCI Install for RabbitMQ",
     "tutorials": [
         {           
-            "title": "简介",
+            "title": "RabbitMQ 简介",
             "filename": "./install-guide.md"
         }
     ]
