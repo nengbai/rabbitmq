@@ -3,7 +3,7 @@
     "tutorials": [
         {           
             "title": "简介",
-            "filename": "./install-guide.md"
+            "filename": "install-guide.md"
         }
     ]
 }
