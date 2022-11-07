@@ -46,7 +46,16 @@ type QueueExchange struct {
 // 链接rabbitMQ
 func (r *RabbitMQ) mqConnect() {
 	var err error
-	RabbitUrl := fmt.Sprintf("amqp://%s:%s@%s:%d/", "admin", "admin", "Pass@word1", 5672)
+	var user string = "admin"
+	// RabbitMQ用户的密码
+	var pwd string = "Pass@word1"
+	// RabbitMQ Broker 的ip地址
+	var host string = "131.186.23.190"
+	// RabbitMQ Broker 监听的端口
+	var port string = "5672"
+	var vhost string = "/"
+	RabbitUrl := "amqp://" + user + ":" + pwd + "@" + host + ":" + port + vhost
+	// RabbitUrl := fmt.Sprintf("amqp://%s:%s@%s:%d/", "admin", "admin", "Pass@word1", 5672)
 	mqConn, err = amqp.Dial(RabbitUrl)
 	r.connection = mqConn // 赋值给RabbitMQ对象
 	if err != nil {

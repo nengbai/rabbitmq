@@ -1,6 +1,6 @@
 # RabbitMQ Golang
 
-## create new project and git
+## create new project and git init
 
 echo "# rabiitmq" >> README.md
 git init
