@@ -3,7 +3,15 @@
     "tutorials": [
         {           
             "title": "RabbitMQ 简介",
-            "filename": "./docs/install-guide.md"
+            "filename": "./docs/introduce.md"
+        },
+        {
+            "title": "RabbitMQ 安装",
+            "filename": "./docs/install-guide.md" 
+        },
+        {
+            "title": "RabbitMQ 安装",
+            "filename": "./docs/code-sample.md"  
         }
     ]
 }

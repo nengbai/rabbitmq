@@ -1,13 +1,9 @@
 
-# RabbitMQ超详细安装教程
+# RabbitMQ 安装教程
 
-## 1、 简介
+## 1、 环境与安装准备
 
-RabbitMQ是一个开源的遵循AMQP协议实现的基于Erlang语言编写，支持多种客户端（语言），用于在分布式系统中存储消息，转发消息，具有高可用高可扩性，易用性等特征。
-
-## 2、 环境与安装准备
-
-### 2.1 安装规划
+### 1.1 安装规划
 
 本实验前提已经在OCI vcn中创建好VM和且每台vm增加200G块存储。
 
@@ -26,7 +22,7 @@ RabbitMQ是一个开源的遵循AMQP协议实现的基于Erlang语言编写，�
 10.0.0.238 hand-rabbitmq-node3
 ```
 
-### 2.2 环境准备
+### 1.2 环境准备
 
 服务器,依次在服务器：hand-rabbitmq-node1，hand-rabbitmq-node2，hand-rabbitmq-node3上执行
 
@@ -100,9 +96,9 @@ tmpfs                         1.6G     0  1.6G   0% /run/user/1000
 systemctl stop firewalld
 ```
 
-## 3、下载与安装RabbitMQ
+## 2、下载与安装RabbitMQ
 
-### 3.1 下载Erlang
+### 2.1 下载Erlang
 
 RabbitMQ是采用 Erlang语言开发的，所以系统环境必须提供 Erlang环境，需要是安装 Erlang
 Erlang和RabbitMQ版本对照：下载地址：<https://cloudsmith.io/~rabbitmq/repos/rabbitmq-erlang/setup/#formats-rpm>
@@ -116,7 +112,7 @@ curl -1sLf \
   | sudo -E bash
   ```
 
-### 3.2 下载RabbitMQ
+### 2.2 下载RabbitMQ
 
 下载地址：<https://rabbitmq.com/download.html>
 选择对应的系统版本点击下载，下载后会得到.rpm文件
@@ -126,7 +122,7 @@ wget https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.11.0/rabbi
 
 ```
 
-### 3.3 安装RabbitMQ
+### 2.3 安装RabbitMQ
 
 在RabiitMQ安装过程中需要依赖socat插件，首先安装该插件
 
@@ -184,7 +180,7 @@ Installed:
 Complete!
 ```
 
-### 3.4 启动RabbitMQ服务
+### 2.4 启动RabbitMQ服务
 
  启动rabbitmq
 
@@ -198,11 +194,11 @@ Complete!
 [root@hand-rabbitmq-node3 ~]# systemctl status rabbitmq-server
 ```
 
-## 4、RabbitMQWeb管理界面及授权操作
+## 3、RabbitMQWeb管理界面及授权操作
 
 以下操作需要登陆rabbitmq vm服务器操作，如果vm服务器无公网IP,需要通过Bastion或同vnc中可登录rabbitmq vm服务器的跳板机器。
 
-### 4.1 安装启动RabbitMQWeb管理界面
+### 3.1 安装启动RabbitMQWeb管理界面
 
 打开RabbitMQWeb管理界面插件
 
@@ -211,7 +207,7 @@ rabbitmq-plugins enable rabbitmq_management
 rabbitmq-plugins list
 ```
 
-### 4.2 添加远程用户
+### 3.2 添加远程用户
 
 rabbitmq有一个默认的账号密码guest，但该情况仅限于本机localhost进行访问，所以需要添加一个远程登录的用户。
 
