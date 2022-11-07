@@ -4,34 +4,6 @@
         {           
             "title": "简介",
             "filename": "./install-guide.md"
-        },
-        {            
-            "title": "Lab 1: Docker容器基础",
-            "filename": "../../docker-container-fundation/docker-container-fundation.md"
-        },
-        {            
-            "title": "Lab 2: 创建Kubernetes集群",
-            "filename": "../../create-kubernetes-cluster/create-kubernetes-cluster.md"
-        },
-        {            
-            "title": "Lab 3: 访问Kubernetes集群",
-            "filename": "../../accessing-cluster/accessing-cluster.md"
-        },
-        {            
-            "title": "Lab 4: 部署简单应用",
-            "filename": "../../deploy-sample-app/deploy-sample-app.md"
-        },
-        {            
-            "title": "Lab 5: 部署完整应用(选做)",
-            "filename": "../../deploy-complex-app/deploy-complex-app.md"
-        },
-        {            
-            "title": "Lab 6: 清除环境",
-            "filename": "../../clear-env/clear-env.md"
-        },
-        {            
-            "title": "附录: 在OKE中搭建Magento电商网站",
-            "filename": "../../deploy-magento-app/deploy-magento-app.md"
         }
     ]
 }
