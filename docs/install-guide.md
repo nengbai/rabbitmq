@@ -26,7 +26,7 @@
 
 服务器,依次在服务器：hand-rabbitmq-node1，hand-rabbitmq-node2，hand-rabbitmq-node3上执行
 
-```bash 
+```bash
 # 关闭selinux模式为 /etc/selinux/config  SELINUX=permissive
 [root@hand-rabbitmq-node3 ~]#setenforce 0
 [root@hand-rabbitmq-node3 ~]# getenforce
