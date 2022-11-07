@@ -10,22 +10,28 @@ RabbitMQ是一个开源的遵循AMQP协议实现的基于Erlang语言编写，�
 ### 2.1 安装规划
 
 本实验前提已经在OCI vcn中创建好VM和且每台vm增加200G块存储。
+
+```text
 序号 服务器名             Private IP        数据与日志存储路径                                   备注
 1   hand-rabbitmq-node1 10.0.0.226    /var/log/rabbitmq and /var/lib/rabbitmq     /dev/sdb
 2   hand-rabbitmq-node2 10.0.0.208    /var/log/rabbitmq and /var/lib/rabbitmq     /dev/sdb
 3   hand-rabbitmq-node3 10.0.0.238    /var/log/rabbitmq and /var/lib/rabbitmq     /dev/sdb
+```
 
 在对应VM的/etc/hosts中增加对应的域名解释
+
+```text
 10.0.0.226 hand-rabbitmq-node1
 10.0.0.208 hand-rabbitmq-node2
 10.0.0.238 hand-rabbitmq-node3
+```
 
 ### 2.2 环境准备
 
 服务器,依次在服务器：hand-rabbitmq-node1，hand-rabbitmq-node2，hand-rabbitmq-node3上执行
 
-```bash
-# 关闭selinux模式为
+```bash 
+# 关闭selinux模式为 /etc/selinux/config  SELINUX=permissive
 [root@hand-rabbitmq-node3 ~]#setenforce 0
 [root@hand-rabbitmq-node3 ~]# getenforce
 Permissive
@@ -193,6 +199,8 @@ Complete!
 ```
 
 ## 4、RabbitMQWeb管理界面及授权操作
+
+以下操作需要登陆rabbitmq vm服务器操作，如果vm服务器无公网IP,需要通过Bastion或同vnc中可登录rabbitmq vm服务器的跳板机器。
 
 ### 4.1 安装启动RabbitMQWeb管理界面
 
