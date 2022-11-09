@@ -7,12 +7,12 @@
 
 本实验前提已经在OCI中创建好VCN和VM，且每台vm增加200G块存储。
 |||
-|序号| 服务器名            |IP地址      |数据和日志存储路径|对应盘符｜
 
-|:-:|:-------------      |:----------|:----------|:----------|
-|1   |hand-rabbitmq-node1| 10.0.0.226|/var/log/rabbitmq and /var/lib/rabbitmq |/dev/sdb  |
-|2   |hand-rabbitmq-node2|10.0.0.208 |/var/log/rabbitmq and /var/lib/rabbitmq |/dev/sdb  |
-|3   |hand-rabbitmq-node3|10.0.0.238 |/var/log/rabbitmq and /var/lib/rabbitmq |/dev/sdb  |
+序号      | 服务器名  | IP地址  | 数据和日志存储路径 | 对应盘符
+---------|----------|---------|---------|---------|---------|
+1   |hand-rabbitmq-node1| 10.0.0.226|/var/log/rabbitmq and /var/lib/rabbitmq |/dev/sdb  
+2   |hand-rabbitmq-node2|10.0.0.208 |/var/log/rabbitmq and /var/lib/rabbitmq |/dev/sdb  
+3   |hand-rabbitmq-node3|10.0.0.238 |/var/log/rabbitmq and /var/lib/rabbitmq |/dev/sdb  
 
 在对应VM的/etc/hosts中增加对应的域名解释
 
