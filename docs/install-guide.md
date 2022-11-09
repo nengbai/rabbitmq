@@ -125,7 +125,8 @@ curl -1sLf \
  安装完成后输入如下指令查看版本号：
 
  ```bash
-
+[root@hand-rabbitmq-node1 ~]# erl -version
+Erlang (SMP,ASYNC_THREADS) (BEAM) emulator version 13.1.1
  ```
 
 ### 2.2 下载RabbitMQ
