@@ -9,10 +9,10 @@
 
 ```text
 |序号 |服务器名            |    Private IP |    数据与日志存储路径                     |          备注 |
----- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+:----: ------------------ ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 |1   |hand-rabbitmq-node1| 10.0.0.226    |/var/log/rabbitmq and /var/lib/rabbitmq |    /dev/sdb  |
-|2   |hand-rabbitmq-node2 |10.0.0.208    |/var/log/rabbitmq and /var/lib/rabbitmq |   /dev/sdb  |
-|3   |hand-rabbitmq-node3 |10.0.0.238    |/var/log/rabbitmq and /var/lib/rabbitmq |    /dev/sdb |
+|2   |hand-rabbitmq-node2 |10.0.0.208    |/var/log/rabbitmq and /var/lib/rabbitmq |   /dev/sdb   |
+|3   |hand-rabbitmq-node3 |10.0.0.238    |/var/log/rabbitmq and /var/lib/rabbitmq |    /dev/sdb  |
 ```
 
 在对应VM的/etc/hosts中增加对应的域名解释
@@ -288,3 +288,5 @@ Load Balancers->Create Load Balancer
 ### 4.2 测试验证
 
 浏览器中输入负载均衡外网IP + 后台服务端口，例如：<http://131.186.23.190:15672>
+
+![测试验证页面](./img/4.2-0.png "测试验证页面")
