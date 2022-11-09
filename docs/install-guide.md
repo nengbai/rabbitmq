@@ -40,9 +40,9 @@ Permissive
 ```bash
 [root@hand-rabbitmq-node1 ~]# vgcreate datavg /dev/sdb
   Volume group "datavg" successfully created
-[root@hand-rabbitmq-node1 ~]# lvcreate -n lvrabbitmq -l  +100G datavg
+[root@hand-rabbitmq-node1 ~]# lvcreate -n lvrabbitmq -L  100G datavg
   Logical volume "lvrabitmq" created.
-[root@hand-rabbitmq-node1 ~]# lvcreate -n lvrabbitmqlog -l  +100G datavg
+[root@hand-rabbitmq-node1 ~]# lvcreate -n lvrabbitmqlog -l 100%FREE datavg
   Logical volume "lvrabbitmqlog" created.
 ```
 
