@@ -125,13 +125,13 @@ wget https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.11.0/rabbi
 
 ### 2.3 安装RabbitMQ
 
-在RabiitMQ安装过程中需要依赖socat插件，首先安装该插件
+1. 在RabiitMQ安装过程中需要依赖socat插件，首先安装该插件
 
 ```bash
 sudo yum install socat logrotate -y
 ```
 
-安装RabbitMQ的安装包
+2.安装RabbitMQ的安装包
 
 ```bash
 sudo yum install rabbitmq-server-3.11.0-1.el8.noarch.rpm -y
@@ -183,13 +183,13 @@ Complete!
 
 ### 2.4 启动RabbitMQ服务
 
- 启动rabbitmq
+1. 启动rabbitmq
 
  ```bash
 [root@hand-rabbitmq-node3 ~]# systemctl start rabbitmq-server
 ```
 
- 查看rabbitmq状态
+2.查看rabbitmq状态
 
  ```bash
 [root@hand-rabbitmq-node3 ~]# systemctl status rabbitmq-server
@@ -201,7 +201,7 @@ Complete!
 
 ### 3.1 安装启动RabbitMQWeb管理界面
 
-1. 打开RabbitMQWeb管理界面插件
+  打开RabbitMQWeb管理界面插件
 
 ```bash
 rabbitmq-plugins enable rabbitmq_management
@@ -212,7 +212,7 @@ rabbitmq-plugins list
 
 rabbitmq有一个默认的账号密码guest，但该情况仅限于本机localhost进行访问，所以需要添加一个远程登录的用户。
 
-1.添加用户
+1. 添加用户
 
 ```text
 
