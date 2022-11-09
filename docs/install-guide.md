@@ -5,12 +5,12 @@
 
 ### 1.1 安装规划
 
-本实验前提已经在OCI vcn中创建好VM和且每台vm增加200G块存储。
-|序号| 服务器名            |IP地址      |数据和日志存储路径                         |对应盘符
+本实验前提已经在OCI vcn中创建好VM，且每台vm增加200G块存储。
+|序号| 服务器名            |IP地址      |数据和日志存储路径|对应盘符
 |:-:|:-------------      |:----------|:----------|:----------|
-|1   |hand-rabbitmq-node1| 10.0.0.226|/var/log/rabbitmq and /var/lib/rabbitmq |    /dev/sdb  |
-|2   |hand-rabbitmq-node2|10.0.0.208 |/var/log/rabbitmq and /var/lib/rabbitmq |   /dev/sdb   |
-|3   |hand-rabbitmq-node3|10.0.0.238 |/var/log/rabbitmq and /var/lib/rabbitmq |    /dev/sdb  |
+|1   |hand-rabbitmq-node1| 10.0.0.226|/var/log/rabbitmq and /var/lib/rabbitmq |/dev/sdb  |
+|2   |hand-rabbitmq-node2|10.0.0.208 |/var/log/rabbitmq and /var/lib/rabbitmq |/dev/sdb  |
+|3   |hand-rabbitmq-node3|10.0.0.238 |/var/log/rabbitmq and /var/lib/rabbitmq |/dev/sdb  |
 
 在对应VM的/etc/hosts中增加对应的域名解释
 
@@ -22,7 +22,7 @@
 
 ### 1.2 环境准备
 
-服务器,依次在服务器：hand-rabbitmq-node1，hand-rabbitmq-node2，hand-rabbitmq-node3上执行
+依次在服务器：hand-rabbitmq-node1，hand-rabbitmq-node2，hand-rabbitmq-node3上执行
 
 ```bash
 # 关闭selinux模式为 /etc/selinux/config  SELINUX=permissive
@@ -169,11 +169,12 @@ Running transaction
   Running scriptlet: rabbitmq-server-3.11.0-1.el8.noarch                                                                                                                                             2/2 
 [/usr/lib/tmpfiles.d/rabbitmq-server.conf:1] Line references path below legacy directory /var/run/, updating /var/run/rabbitmq → /run/rabbitmq; please update the tmpfiles.d/ drop-in file accordingly.
 
-  Verifying        : erlang-25.1.1-1.el8.x86_64                                                                                                                                                      1/2 
+  Verifying        : erlang-25.1.1-1.el8.x86_64                                                                                                                                                 1/2 
   Verifying        : rabbitmq-server-3.11.0-1.el8.noarch                                                                                                                                             2/2 
 
 Installed:
-  erlang-25.1.1-1.el8.x86_64                                                                     rabbitmq-server-3.11.0-1.el8.noarch                                                                    
+  erlang-25.1.1-1.el8.x86_64
+  rabbitmq-server-3.11.0-1.el8.noarch                                                                    
 
 Complete!
 ```
