@@ -301,3 +301,5 @@ rabbitmqctl list_users
 
 2. 管理RabbitMQ 集群
 ![管理集群](./img/4.2-1.png "管理集群页面")
+
+  恭喜您，您的RabbitMQ 集群已经Ready，参照code-example 准备写代码.....
