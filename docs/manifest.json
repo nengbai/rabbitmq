@@ -1,0 +1,17 @@
+{
+    "workshoptitle": "OCI Install for RabbitMQ",
+    "tutorials": [
+        {           
+            "title": "RabbitMQ 简介",
+            "filename": "/docs/introduce.md"
+        },
+        {
+            "title": "RabbitMQ 安装教材",
+            "filename": "/docs/install-guide.md" 
+        },
+        {
+            "title": "RabbitMQ Code Example",
+            "filename": "/docs/code-example.md"  
+        }
+    ]
+}
