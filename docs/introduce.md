@@ -31,8 +31,8 @@ RabbitMQ是基于Erlang开发的，遵循AMQP(Advanced Message Queuing Protocol)
    ![RabbitMQ架构](./img/1.2-2.png "RabbitMQ架构")
 
     这样，A服务既不用循环调用B的查询API，也不用提供callback API；同样，B服务也不用做这些操作，A服务还能及时的得到异步处理成功的消息。
-
-   3.流量消峰
+  
+   3. 流量消峰
     简单来说： 就是在访问量剧增的情况下，比如6.18/11.11下单的人多，但这个应用仍然要运行，就可以使用消息中间件采用队列的形式减少突然访问的压力。
    举个电商订单系统例子:
 
