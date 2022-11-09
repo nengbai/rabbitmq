@@ -11,4 +11,7 @@ RabbitMQ是基于Erlang开发的，遵循AMQP(Advanced Message Queuing Protocol)
 
 ## 2、   应用场景
 
-  微服务和无服务器应用程的解藕，消息可靠传输。
+  1. 微服务和无服务器应用程的解藕，消息可靠传输。
+
+  如电商系统：支付，库存，物流都交给MQ做异步消息交付。
+    ![RabbitMQ架构](./img/1.2-0.png "RabbitMQ架构")

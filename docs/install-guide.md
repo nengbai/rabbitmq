@@ -109,17 +109,23 @@ systemctl stop firewalld
 
 ### 2.1 下载安装Erlang
 
-RabbitMQ是采用 Erlang语言开发的，所以系统环境必须提供 Erlang环境，需要是安装 Erlang
-Erlang和RabbitMQ版本对照：下载地址：<https://cloudsmith.io/~rabbitmq/repos/rabbitmq-erlang/setup/#formats-rpm>
+RabbitMQ是采用 Erlang语言开发的，所以系统环境必须提供 Erlang环境，需要安装 Erlang
+Erlang和RabbitMQ版本对照：
+下载地址：<https://cloudsmith.io/~rabbitmq/repos/rabbitmq-erlang/setup/#formats-rpm>
 
-这里安装最新版本3.11.0的RabbitMQ，对应的Erlang版本推荐23.x，我们下载erlang-25.1.1-1.el8.x86_64.rpm
-安装完成后输入如下指令查看版本号。
+这里安装最新版本3.11.0的RabbitMQ，对应的Erlang版本推荐23.x，我们下载：erlang-25.1.1-1.el8.x86_64.rpm
 
 ```bash
 curl -1sLf \
   'https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/setup.rpm.sh' \
   | sudo -E bash
   ```
+
+ 安装完成后输入如下指令查看版本号：
+
+ ```bash
+ 
+ ```
 
 ### 2.2 下载RabbitMQ
 
