@@ -15,17 +15,16 @@ RabbitMQ是基于Erlang开发的，遵循AMQP(Advanced Message Queuing Protocol)
 
      如电商系统：支付，库存，物流都交给MQ做消息可靠消费。
     ![RabbitMQ架构](./img/1.2-0.png "RabbitMQ架构")
-  2.异步处理
-    ![RabbitMQ架构](./img/1.2-2.png "RabbitMQ架构") 
+  2. 异步处理
     服务之间异步调用是异步的。
     例如: A调用B，B需要花费很长时间执行，但是A需要知道B什么时候可以执行完。
     以前一般有两种方式：
     - A过一段时间去调用B的查询api查询。
     - 或者A提供一个callback api， B执行完之后调用API通A服务。
-  
     以上两种都不是很优雅，使用消息总线，可以很方便解决这个问题：
     - A调用B服务后，只需要监听B处理完成的消息，当B处理完成后，会发送一条消息给MQ
     - MQ 会将此消息转发给A服务。
+   ![RabbitMQ架构](./img/1.2-2.png "RabbitMQ架构")
     这样A服务既不用循环调用B的查询API，也不用提供callback API。同样B服务也不用做这些操作。A服务还能及时的得到异步处理成功的消息。
 
    
