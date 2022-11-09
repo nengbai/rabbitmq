@@ -273,26 +273,31 @@ rabbitmqctl list_users
 
 ### 4.1 创建负载均衡
 
-- 选择Networking->Virtual Cloud Networking
+1. 选择Networking->Virtual Cloud Networking
 ![创建负载均衡](./img/4.1-0.png "测试验证页面")
 
-- Load Balancers->Create Load Balancer
+2. Load Balancers->Create Load Balancer
 ![测试验证页面](./img/4.1-1.png "测试验证页面")
 
-- 选择负载均衡器类型为Network Load Balancer
+3. 选择负载均衡器类型为Network Load Balancer
 ![测试验证页面](./img/4.1-2.png "测试验证页面")
 
-- 输入Load Balancer Name 和选择负载均衡访问类型：Public
+4. 输入Load Balancer Name 和选择负载均衡访问类型：Public
 ![测试验证页面](./img/4.1-3.png "测试验证页面")
 
-- 增加后台服务监听协议和端口
+5. 增加后台服务监听协议和端口
 ![测试验证页面](./img/4.1-4.png "测试验证页面")
-
-- 增加后台服务
 ![测试验证页面](./img/4.1-5.png "测试验证页面")
+![测试验证页面](./img/4.1-6.png "测试验证页面")
+6. 增加后台服务
+![测试验证页面](./img/4.1-7.png "测试验证页面")
 
 ### 4.2 测试验证
 
 浏览器中输入负载均衡外网IP + 后台服务端口，例如：<http://131.186.23.190:15672>
 
-![测试验证页面](./img/4.2-0.png "测试验证页面")
+1. 登管理页面
+![登陆页面](./img/4.2-0.png "登陆页面")
+
+2. 管理RabbitMQ 集群
+![管理集群](./img/4.2-1.png "管理集群页面")
