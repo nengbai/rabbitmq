@@ -9,7 +9,7 @@
 
 ```text
 |序号 |服务器名            |    Private IP |    数据与日志存储路径                     |          备注 |
-:----: ------------------ ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+:----: ------------------:----           :---- ---- ---- ---- ---- ---- ---- ---- :---- ---- 
 |1   |hand-rabbitmq-node1| 10.0.0.226    |/var/log/rabbitmq and /var/lib/rabbitmq |    /dev/sdb  |
 |2   |hand-rabbitmq-node2 |10.0.0.208    |/var/log/rabbitmq and /var/lib/rabbitmq |   /dev/sdb   |
 |3   |hand-rabbitmq-node3 |10.0.0.238    |/var/log/rabbitmq and /var/lib/rabbitmq |    /dev/sdb  |
@@ -201,7 +201,7 @@ Complete!
 
 ### 3.1 安装启动RabbitMQWeb管理界面
 
-打开RabbitMQWeb管理界面插件
+1. 打开RabbitMQWeb管理界面插件
 
 ```bash
 rabbitmq-plugins enable rabbitmq_management
@@ -212,20 +212,20 @@ rabbitmq-plugins list
 
 rabbitmq有一个默认的账号密码guest，但该情况仅限于本机localhost进行访问，所以需要添加一个远程登录的用户。
 
-添加用户
+1.添加用户
 
 ```text
 
 rabbitmqctl add_user 用户名 密码
 ```
 
-设置用户角色,分配操作权限
+2.设置用户角色,分配操作权限
 
 ```text
 rabbitmqctl set_user_tags 用户名 角色
 ```
 
-为用户添加资源权限(授予访问虚拟机根节点的所有权限)
+3.为用户添加资源权限(授予访问虚拟机根节点的所有权限)
 
 ```text
 rabbitmqctl set_permissions -p / 用户名 ".*" ".*" ".*"
@@ -249,7 +249,7 @@ Setting permissions for user "admin" in vhost "/" ...
 
 ```
 
-其他指令：
+4.其他指令：
 
 修改密码
 
