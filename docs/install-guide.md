@@ -23,6 +23,7 @@
 ### 1.2 环境准备
 
 * 服务器环境准备
+  
 依次在服务器：hand-rabbitmq-node1，hand-rabbitmq-node2，hand-rabbitmq-node3上执行
 
 ```bash
