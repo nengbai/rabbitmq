@@ -16,7 +16,7 @@ RabbitMQ是基于Erlang开发的，遵循AMQP(Advanced Message Queuing Protocol)
      如电商系统：支付，库存，物流都交给MQ做消息可靠消费。
     ![RabbitMQ架构](./img/1.2-0.png "RabbitMQ架构")
   2.异步处理
-    ![RabbitMQ架构](./img/1.2-1.png "RabbitMQ架构") 
+    ![RabbitMQ架构](./img/1.2-2.png "RabbitMQ架构") 
     服务之间异步调用是异步的。
     例如: A调用B，B需要花费很长时间执行，但是A需要知道B什么时候可以执行完。
     以前一般有两种方式：
