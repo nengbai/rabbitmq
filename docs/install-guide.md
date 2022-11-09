@@ -22,6 +22,7 @@
 
 ### 1.2 环境准备
 
+* 服务器环境准备
 依次在服务器：hand-rabbitmq-node1，hand-rabbitmq-node2，hand-rabbitmq-node3上执行
 
 ```bash
@@ -30,6 +31,8 @@
 [root@hand-rabbitmq-node3 ~]# getenforce
 Permissive
 ```
+
+* 创建文件系统
 
 ```bash
 # 新建RabbitMQ 数据存储文件系统
@@ -64,10 +67,17 @@ sda
   └─ocivolume-oled xfs               b4ce40f5-2ade-42e5-8371-b67fcc5e1e06   /var/oled
 sdb                LVM2_member       FoLlbP-RfDc-wym6-mooe-8Mg9-SNtG-fnAyVH 
 └─datavg-lvrabitmq xfs               bd6f0a53-ed8c-404b-9325-da981fee3bf1   
+```
+
+* 增加文件系统挂载点
+
+```bash
 [root@hand-rabbitmq-node1 ~]# vi /etc/fstab 
 UUID=3e2833e3-01b6-4806-8914-78c0b0a424a6  /var/log/rabbitmq  xfs     defaults        0 2
 UUID=4e2833e3-01b6-4806-8944-78c0b0a4446  /var/lib/rabbitmq   xfs     defaults        0 2
 ```
+
+* 挂载文件系统/var/log/rabbitmq 和 /var/lib/rabbitmq
 
 ```bash
 [root@hand-rabbitmq-node1 ~]# mount -a
@@ -84,11 +94,11 @@ tmpfs                         7.7G     0  7.7G   0% /sys/fs/cgroup
 tmpfs                         1.6G     0  1.6G   0% /run/user/0
 tmpfs                         1.6G     0  1.6G   0% /run/user/987
 tmpfs                         1.6G     0  1.6G   0% /run/user/1000
-/dev/mapper/datavg-lvrabitmqlog  100G  746M  100G   1% /var/log/rabbitmq
+/dev/mapper/datavg-lvrabitmqlog  100G  746M  99G   1% /var/log/rabbitmq
 /dev/mapper/datavg-lvrabitmq  100G  746M  100G   1% /var/lib/rabbitmq
 ```
 
-关闭系统防火墙
+* 关闭系统防火墙
 
 ```bash
 systemctl stop firewalld
@@ -96,7 +106,7 @@ systemctl stop firewalld
 
 ## 2、下载与安装RabbitMQ
 
-### 2.1 下载Erlang
+### 2.1 下载安装Erlang
 
 RabbitMQ是采用 Erlang语言开发的，所以系统环境必须提供 Erlang环境，需要是安装 Erlang
 Erlang和RabbitMQ版本对照：下载地址：<https://cloudsmith.io/~rabbitmq/repos/rabbitmq-erlang/setup/#formats-rpm>
