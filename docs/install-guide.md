@@ -295,7 +295,7 @@ rabbitmqctl list_users
 
 ### 4.2 安全规则设置
 
-1. 增加网络安全组策略
+1.增加网络安全组策略
 
 选择RabbitMQ VM所在的VCN
 ![选择VCN](./img/4.2.1-0.png "登陆页面")
@@ -304,8 +304,8 @@ rabbitmqctl list_users
 
 2.增加网络安全组到RabbitMQ VM
 
-![选择VCN](./img/4.2.1-3.png "登陆页面")
-![选择VCN](./img/4.2.1-4.png "登陆页面")
+![选择VCN](./img/4.2.2-0.png "登陆页面")
+![选择VCN](./img/4.2.2-1.png "登陆页面")
 
 ### 4.3 测试验证
 
