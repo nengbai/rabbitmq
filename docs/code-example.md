@@ -10,7 +10,7 @@ git branch -M main
 git push -u origin main
 ```
 
-## 简单队列/工作队列模式
+## 简单队列
 
 ![简单队列](./img/sample2.1.0.png "简单队列")
 
@@ -159,7 +159,7 @@ go run Comsucer.go
 
 ![选择VCN](./img/sample.1.2.jpg "登陆页面")
 
-## Work
+## 工作队列模式
 
 ![选择VCN](./img/4.2.1-0.png "登陆页面")
 
