@@ -3,7 +3,7 @@ package main
 import (
 	"encoding/json"
 	"log"
-	"rabbitmq-demo/lib"
+	"rabbitmq/lib"
 
 	"github.com/streadway/amqp"
 )

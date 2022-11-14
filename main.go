@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"rabbitmq-demo/lib"
+	"rabbitmq/lib"
 )
 
 type TestPro struct {
@@ -10,8 +10,8 @@ type TestPro struct {
 }
 
 // 实现发送者
-func (t *TestPro) MsgContent("131.186.23.190", "5672", "admin" , "Pass@word1" , "/" ) string {
-	
+func (t *TestPro) MsgContent() string {
+
 	return t.msgContent
 }
 
@@ -22,11 +22,19 @@ func (t *TestPro) Consumer(dataByte []byte) error {
 }
 
 func main() {
-	msg := fmt.Sprintf("这是测试任务")
+	// 连接RabbitMQ服务器
+	conn, err := lib.RabbitMQConn()
+	lib.ErrorHanding(err, "Failed to connect to RabbitMQ")
+	// 关闭连接
+	defer conn.Close()
+	// 新建一个通道
+	ch, err := conn.Channel()
+	lib.ErrorHanding(err, "Failed to open a channel")
+	// 关闭通道
+	defer ch.Close()
+	msg := "这是测试任务"
+	fmt.Println(msg)
 
-	t := &TestPro{
-		msg,
-	}
 	queueExchange := &lib.QueueExchange{
 		"test.rabbit",
 		"rabbit.key",
@@ -34,7 +42,7 @@ func main() {
 		"direct",
 	}
 	mq := lib.New(queueExchange)
-	mq.RegisterProducer(t)
+	mq.RegisterProducer(conn)
 	mq.RegisterReceiver(t)
 	mq.Start()
 }

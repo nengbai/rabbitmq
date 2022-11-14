@@ -36,7 +36,7 @@ func main() {
 	)
 	lib.ErrorHanding(err, "Failed to declare a queue")
 	// 定义一个消费者
-	body := bodyFrom(os.Args)
+	body := bodyForm(os.Args)
 	err = ch.Publish(
 		"",
 		q.Name,
@@ -49,5 +49,5 @@ func main() {
 		},
 	)
 	lib.ErrorHanding(err, "Fail to publish a message !")
-	log.Printf("send message: s%", body)
+	log.Println("send message: s%", body)
 }

@@ -2,22 +2,8 @@ package main
 
 import (
 	"log"
-	"os"
 	"rabbitmq/lib"
-	"strings"
-
-	"github.com/streadway/amqp"
 )
-
-func bodyForm(args []string) string {
-	var s string
-	if (len(args) < 2) || os.Args[1] == "" {
-		s = "no Task"
-	} else {
-		s = strings.Join(args[1:], " ")
-	}
-	return s
-}
 
 func main() {
 	conn, err := lib.RabbitMQConn()
@@ -35,19 +21,31 @@ func main() {
 		nil,          // arguments
 	)
 	lib.ErrorHanding(err, "Failed to declare a queue")
-	// 定义一个消费者
-	body := bodyFrom(os.Args)
-	err = ch.Publish(
-		"",
-		q.Name,
+	err = ch.Qos(
+		1,
+		0,
 		false,
-		false,
-		amqp.Publishing{
-			ContentType:  "text/plain",
-			DeliveryMode: amqp.Persistent,
-			Body:         []byte(body),
-		},
 	)
-	lib.ErrorHanding(err, "Fail to publish a message !")
-	log.Printf("send message: s%", body)
+	lib.ErrorHanding(err, "Fail to set Qos!")
+	msgs, err := ch.Consume(
+		q.Name,
+		"",
+		false,
+		false,
+		false,
+		false,
+		nil,
+	)
+	lib.ErrorHanding(err, "Fail to Register a comsumer!")
+	forever := make(chan bool)
+	go func() {
+		for d := range msgs {
+			log.Printf("Reviced a message:%s\n", string(d.Body))
+			log.Println("Done")
+			d.Ack(false)
+		}
+
+	}()
+	log.Println(" [*] Wait for message.To text Press CTRL + C")
+	<-forever
 }
