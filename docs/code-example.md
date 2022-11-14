@@ -2,6 +2,14 @@
 
 ## Github code download
 
+```text
+git remote add origin https://github.com/nengbai/rabbitmq.git
+
+git branch -M main
+
+git push -u origin main
+```
+
 ## 简单队列/工作队列模式
 
 ![简单队列](./img/sample2.1.0.png "简单队列")
