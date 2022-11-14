@@ -133,7 +133,35 @@ func main() {
 }
 ```
 
+3.测试结果
+
+消费端之行程序produncer.go
+
+```bash Producer
+cd sample
+go run produncer.go
+```
+
+消费端之行程序 Comsucer.go
+
+```bash
+cd sample
+go run Comsucer.go
+```
+
+![选择VCN](./img/sample.1.2.jpg "登陆页面")
+
 ## Fanout(发布/订阅)
+
+![选择VCN](./img/4.2.1-0.png "登陆页面")
+
+1. Producer 端代码
+2. Comsumer 端代码
+3. 测试结果
+
+```bash
+   
+```
 
 ![选择VCN](./img/4.2.1-0.png "登陆页面")
 
