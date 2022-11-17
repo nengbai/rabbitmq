@@ -465,7 +465,7 @@ go run emit_log.go 5
 
 ### 2.4、 Routing模式
 
-![Routing模式](./img/4.2.1-0.png "Routing模式")
+![Routing模式](./img/sample-2.4.0.png "Routing模式")
 
 1. Producer 端代码
 
@@ -813,14 +813,6 @@ func main() {
 
 ```bash
 cd topic
-go run receive_logs_topic.go "#"
-go run receive_logs_topic.go critical
-```
-
-生产端之行程序: emit_log_topic.go
-
-```bash Producer
-cd topic
 # shell1
 go run receive_logs_topic.go "#"
 ​
@@ -837,6 +829,13 @@ go run receive_logs_topic.go "kern.*" "*.critical"
 go run emit_log_topic.go "kern.critical" "A critical kernel error"
 ```
 
+生产端之行程序: emit_log_topic.go
+
+```bash Producer
+cd topic
+go run emit_log_topic.go "kern.critical" "A critical kernel error"
+
+```
 
 ![Topic模式](./img/sample-2.4.1.png "Topic模式")
 
