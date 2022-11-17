@@ -809,10 +809,34 @@ func main() {
 
 '3'. 测试结果
 
-```bash
+消费端之行程序 receive_logs_topic.go
 
-   
+```bash
+cd topic
+go run receive_logs_topic.go "#"
+go run receive_logs_topic.go critical
 ```
+
+生产端之行程序: emit_log_topic.go
+
+```bash Producer
+cd topic
+# shell1
+go run receive_logs_topic.go "#"
+​
+# shell2
+go run receive_logs_topic.go "kern.*"
+​
+# shell3
+go run receive_logs_topic.go "*.critical"
+​
+# shell4
+go run receive_logs_topic.go "kern.*" "*.critical"
+​
+# shell5 
+go run emit_log_topic.go "kern.critical" "A critical kernel error"
+```
+
 
 ![Topic模式](./img/sample-2.4.1.png "Topic模式")
 
