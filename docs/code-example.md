@@ -1,6 +1,6 @@
 # RabbitMQ Code Example
 
-## Github code download
+## 1、 Github code download
 
 ```text
 git remote add origin https://github.com/nengbai/rabbitmq.git
@@ -10,7 +10,9 @@ git branch -M main
 git push -u origin main
 ```
 
-## 简单队列
+## 2、代码实现
+
+### 2.1、 简单队列
 
 ![简单队列](./img/sample2.1.0.png "简单队列")
 
@@ -157,11 +159,11 @@ cd sample
 go run Comsucer.go
 ```
 
-![选择VCN](./img/sample.1.2.jpg "登陆页面")
+![简单队列](./img/sample.1.2.jpg "简单队列")
 
-## 工作队列模式
+### 2.2、 工作队列模式
 
-![选择VCN](./img/4.2.1-0.png "登陆页面")
+![工作队列模式](./img/sample-2.2.0.png "工作队列模式")
 
 1. Producer 端代码
 
@@ -281,9 +283,25 @@ func main() {
 
 `3`. 测试结果
 
-## Fanout(发布/订阅)
+生产端之行程序: task.go
 
-![选择VCN](./img/4.2.1-0.png "登陆页面")
+```bash Producer
+cd task
+go run task.go
+```
+
+消费端之行程序 worker.go
+
+```bash
+cd task
+go run worker.go
+```
+
+![工作队列](./img/sample2.1.0.png "工作队列")
+
+### 2.3、 Fanout(发布/订阅)
+
+![Fanout(发布/订阅)](./img/sample-2.3.0.png "Fanout(发布/订阅)")
 
 1. Producer 端代码
 
@@ -425,16 +443,29 @@ func main() {
 
 '3'. 测试结果
 
-```bash
+消费端之行程序 receive_logs.go
 
-   
+```bash
+cd fanout
+go run receive_logs.go
 ```
 
-![选择VCN](./img/4.2.1-0.png "登陆页面")
+生产端之行程序: emit_log.go
 
-## Routing模式
+```bash Producer
+cd fanout
+go run emit_log.go 1
+go run emit_log.go 2
+go run emit_log.go 3
+go run emit_log.go 4
+go run emit_log.go 5
+```
 
-![选择VCN](./img/4.2.1-0.png "登陆页面")
+![Fanout(发布/订阅)](./img/sample-2.3.1.png "Fanout(发布/订阅)")
+
+### 2.4、 Routing模式
+
+![Routing模式](./img/4.2.1-0.png "Routing模式")
 
 1. Producer 端代码
 
@@ -599,16 +630,27 @@ func main() {
 
 '3'. 测试结果
 
-```bash
+消费端之行程序 receive_logs_direct.go
 
-   
+```bash
+cd routing
+go run receive_logs_direct.go warning
+go run receive_logs_direct.go error
 ```
 
-![选择VCN](./img/4.2.1-0.png "登陆页面")
+生产端之行程序: emit_log_direct.go
 
-## Topics模式
+```bash Producer
+cd routing
+go run emit_log_direct.go warning "Notice, this is Warning." 
+go run emit_log_direct.go error "Run. Run. Or it will explode."
+```
 
-![选择VCN](./img/4.2.1-0.png "登陆页面")
+![Routing模式](./img/sample-2.4.0.png "Routing模式")
+
+### 2.5、 Topics模式
+
+![ Topics模式](./img/sample-2.4.1.png " Topics模式")
 
 1. Producer 端代码
 
@@ -772,11 +814,11 @@ func main() {
    
 ```
 
-![选择VCN](./img/4.2.1-0.png "登陆页面")
+![Topic模式](./img/sample-2.4.1.png "Topic模式")
 
-## RPC模式
+### 2.6、 RPC模式
 
-![选择VCN](./img/4.2.1-0.png "登陆页面")
+![RPC模式](./img/sample-2.4.0.png "RPC模式")
 
 1. Server 端代码
 
@@ -988,9 +1030,18 @@ func bodyFrom(args []string) int {
 
 '3'. 测试结果
 
-```bash
+服务器端之行程序: rpc_server.go
 
-   
+```bash RPC Server
+cd rpc
+go run rpc_server.go
 ```
 
-![选择VCN](./img/4.2.1-0.png "登陆页面")
+客户端之行程序 rpc_client.go
+
+```bash RPC Client
+cd rpc
+go run rpc_server.go 5
+```
+
+![选择VCN](./img/sample-2.4.1.png "登陆页面")
