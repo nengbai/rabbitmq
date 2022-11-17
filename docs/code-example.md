@@ -297,7 +297,7 @@ cd task
 go run worker.go
 ```
 
-![工作队列](./img/sample2.1.0.png "工作队列")
+![工作队列](./img/sample-2.2.1.png "工作队列")
 
 ### 2.3、 Fanout(发布/订阅)
 
