@@ -3,11 +3,8 @@
 ## 1、 Github code download
 
 ```text
-git remote add origin https://github.com/nengbai/oracle-oqs.git
+git clone https://github.com/nengbai/oracle-oqs.git
 
-git branch -M main
-
-git push -u origin main
 ```
 
 ## 2、代码实现

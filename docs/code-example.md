@@ -3,11 +3,7 @@
 ## 1、 Github code download
 
 ```text
-git remote add origin https://github.com/nengbai/rabbitmq.git
-
-git branch -M main
-
-git push -u origin main
+git clone https://github.com/nengbai/rabbitmq.git
 ```
 
 ## 2、代码实现
