@@ -223,6 +223,12 @@ Complete!
 ```bash
 rabbitmq-plugins enable rabbitmq_management
 rabbitmq-plugins list
+
+输入以下命令:增加
+  rabbitmq-plugins enable rabbitmq_mqtt                              开启 rabbitmq_mqtt 对应端口 1883
+
+  rabbitmq-plugins enable rabbitmq_web_mqtt                           开启 rabbitmq_web_mqtt 对应端口 15675
+
 ```
 
 ### 3.2 添加远程用户
