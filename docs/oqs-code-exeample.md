@@ -158,6 +158,3 @@ go run produncer.go
 cd sample
 go run Comsucer.go
 ```
-
-![简单队列](./img/sample.1.2.jpg "简单队列")
-
