@@ -137,3 +137,5 @@ go run produncer.go
 cd test
 go run consucer.go
 ```
+
+![标准队列](./img/oqs-1-1.png "标准队列")
