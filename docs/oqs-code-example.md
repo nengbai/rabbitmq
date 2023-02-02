@@ -17,68 +17,55 @@ git push -u origin main
 ![OQS简单队列](./img/oqs-1-0.jpg "标准队列")
 
 1. Producer 端代码
-
+   
 ```text
-   package main
+package main
 
 import (
- "log"
- "os"
- "rabbitmq/lib"
- "strings"
+	"fmt"
+	"oqs/producer"
+	"oqs/queue"
+	"strconv"
+
+	"github.com/gofrs/uuid"
 )
 
-func bodyForm(args []string) string {
- var s string
- if (len(args) < 2) || os.Args[1] == "" {
-  s = "no Task"
- } else {
-  s = strings.Join(args[1:], " ")
- }
- return s
+type Message struct {
+	Typename string `json:"typename,omitempty"`
+	UUID     string `json:"uuid,omitempty"`
+	Data     []byte `json:"data,omitempty"`
 }
 
 func main() {
- conn, err := lib.RabbitMQConn()
- lib.ErrorHanding(err, "failed to connect to RabbitMQ")
- defer conn.Close()
- ch, err := conn.Channel()
- lib.ErrorHanding(err, "failed to open a channel")
- defer ch.Close()
- q, err := ch.QueueDeclare(
-  "simple:queue", // name
-  false,          // durable
-  false,          // delete when unused
-  false,          // exclusive
-  false,          // no-wait
-  nil,            // arguments
- )
- lib.ErrorHanding(err, "Failed to declare a queue")
+	const MessageEndpoint = "https://cell-1.queue.messaging.ap-tokyo-1.oci.oraclecloud.com"
+	qid := "ocid1.queue.oc1.ap-tokyo-1.amaaaaaaj37ijuqa7dumi4aueyrmnhfu5s2mawtbecwtxthutgmoapjhbaba"
+	id, _ := uuid.NewV4()
+	ids := id.String()
+	mac := queue.GetLocalMac()
+	ids = mac + ids
+	var in string
+	var data *Message
+	for i := 0; i < 50; i++ {
+		in = strconv.Itoa(i)
+		fmt.Println(in)
+		data = &Message{
+			Typename: "order1",
+			UUID:     ids,
+			Data:     []byte(in),
+		}
 
- msgs, err := ch.Consume(
-  q.Name, // queue
-  "",     // consumer
-  true,   // auto-ack
-  false,  // exclusive
-  false,  // no-local
-  false,  // no-wait
-  nil,    // args
- )
- lib.ErrorHanding(err, "Failed to register a consumer")
-
- var forever chan struct{}
-
- go func() {
-  for d := range msgs {
-   log.Printf("Received a message: %s", string(d.Body))
-  }
- }()
-
- log.Printf(" [*] Waiting for messages. To exit press CTRL+C\n")
- <-forever
+		content := queue.Encode(data)
+		resp, err := producer.PutMessages(ids, qid, MessageEndpoint, content)
+		fmt.Println("------")
+		//resp, err := consumer.GetMessages(ids, qid, MessageEndpoint)
+		if err != nil {
+			fmt.Println(err)
+		}
+		fmt.Println(resp)
+	}
 }
-
 ```
+
 
 2.Comsumer 端代码
 
@@ -86,61 +73,54 @@ func main() {
 package main
 
 import (
- "log"
- "os"
- "rabbitmq/lib"
- "strings"
+	"encoding/json"
+	"fmt"
+	"oqs/queue"
+        "oqs/consumer"
+	// "log"
+
+	"github.com/gofrs/uuid"
 )
 
-func bodyForm(args []string) string {
- var s string
- if (len(args) < 2) || os.Args[1] == "" {
-  s = "no Task"
- } else {
-  s = strings.Join(args[1:], " ")
- }
- return s
+type Message struct {
+	Typename string `json:"Typename,omitempty"`
+	UUID     string `json:"uuid,omitempty"`
+	Data     []byte `json:"data,omitempty"`
 }
 
 func main() {
- conn, err := lib.RabbitMQConn()
- lib.ErrorHanding(err, "failed to connect to RabbitMQ")
- defer conn.Close()
- ch, err := conn.Channel()
- lib.ErrorHanding(err, "failed to open a channel")
- defer ch.Close()
- q, err := ch.QueueDeclare(
-  "simple:queue", // name
-  false,          // durable
-  false,          // delete when unused
-  false,          // exclusive
-  false,          // no-wait
-  nil,            // arguments
- )
- lib.ErrorHanding(err, "Failed to declare a queue")
+	const MessageEndpoint = "https://cell-1.queue.messaging.ap-tokyo-1.oci.oraclecloud.com"
+	qid := "ocid1.queue.oc1.ap-tokyo-1.amaaaaaaj37ijuqa7dumi4aueyrmnhfu5s2mawtbecwtxthutgmoapjhbaba"
+	id, _ := uuid.NewV4()
+	ids := id.String()
+	mac := queue.GetLocalMac()
+	ids = mac + ids
+	//queue.GetQueue(ids, qid)
+	fmt.Println("------")
+	resp, err := consumer.GetMessages(ids, qid, MessageEndpoint)
+	if err != nil {
+		fmt.Println(err)
+	}
+	var message Message
 
- msgs, err := ch.Consume(
-  q.Name, // queue
-  "",     // consumer
-  true,   // auto-ack
-  false,  // exclusive
-  false,  // no-local
-  false,  // no-wait
-  nil,    // args
- )
- lib.ErrorHanding(err, "Failed to register a consumer")
+	//data := make(map[string]interface{})
+	//var forever chan struct{}
+	//go func() {
+		
+	for _, v := range resp.Messages {
+		messageReceipt := queue.Decode(*v.Content)
+		err := json.Unmarshal([]byte(messageReceipt), &message)
+		if err != nil {
+			fmt.Println(err)
+		}
+		fmt.Println("message is: ", message.Typename,string(message.Data) )
+	}
+	//}()
+	//	log.Println(" [*] Waiting for logs. To exit press CTRL+C")
+	//	<-forever
 
- var forever chan struct{}
-
- go func() {
-  for d := range msgs {
-   log.Printf("Received a message: %s", string(d.Body))
-  }
- }()
-
- log.Printf(" [*] Waiting for messages. To exit press CTRL+C\n")
- <-forever
 }
+
 ```
 
 3.测试结果
