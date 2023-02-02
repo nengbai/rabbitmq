@@ -131,7 +131,7 @@ func main() {
 go run produncer.go
 ```
 
-消费端之行程序 comsucer.go
+消费端之行程序 consucer.go
 
 ```bash
 cd test
