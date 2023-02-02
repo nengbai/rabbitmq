@@ -128,13 +128,12 @@ func main() {
 消费端之行程序produncer.go
 
 ```bash Producer
-cd sample
 go run produncer.go
 ```
 
-消费端之行程序 Comsucer.go
+消费端之行程序 comsucer.go
 
 ```bash
-cd sample
-go run Comsucer.go
+cd test
+go run consucer.go
 ```
