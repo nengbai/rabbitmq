@@ -12,6 +12,10 @@
         {
             "title": "RabbitMQ Code Example",
             "filename": "./docs/code-example.md"  
+        },
+        {
+            "title": "OCI Queue Code Example",
+            "filename": "./docs/code-example.md"  
         }
     ]
 }
