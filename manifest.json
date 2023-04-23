@@ -11,7 +11,7 @@
         },
         {
             "title": "RabbitMQ 容器安装教材",
-            "filename": "./docs/install-guide.md" 
+            "filename": "./docs/container-install.md" 
         },
         {
             "title": "RabbitMQ Code Example",
