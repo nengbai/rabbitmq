@@ -6,7 +6,11 @@
             "filename": "./docs/introduce.md"
         },
         {
-            "title": "RabbitMQ 安装教材",
+            "title": "RabbitMQ rpm 安装教材",
+            "filename": "./docs/install-guide.md" 
+        },
+        {
+            "title": "RabbitMQ 容器安装教材",
             "filename": "./docs/install-guide.md" 
         },
         {
